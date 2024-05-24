@@ -7,7 +7,7 @@
                         alt="Your Company">
                 </div>
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
+                    <div class="ml-10 flex items-baseline space-x-3">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
                         <x-nav-link href="/posts" :active="request()->is('posts')">Blog</x-nav-link>

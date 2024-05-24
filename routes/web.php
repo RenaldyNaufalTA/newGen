@@ -5,7 +5,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home', ['title' => 'Homepage']);
+    return view('home', ['title' => 'newGen 2.0']);
 });
 Route::get('/posts', function () {
     return view('posts', [
