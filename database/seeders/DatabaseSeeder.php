@@ -16,7 +16,32 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         //Membuat post dengan User secara bersamaan
+        Category::create([
+            'name' => 'Design',
+            'slug' => 'design',
+            'color' => 'sky'
+        ]);
+        Category::create([
+            'name' => 'Programming',
+            'slug' => 'programming',
+            'color' => 'red'
+        ]);
+        Category::create([
+            'name' => 'Gadget',
+            'slug' => 'gadget',
+            'color' => 'lime'
+        ]);
+        Category::create([
+            'name' => 'Tech',
+            'slug' => 'tech',
+            'color' => 'blue'
+        ]);
+        Category::create([
+            'name' => 'Slice of Life',
+            'slug' => 'slice-of-life',
+            'color' => 'teal'
+        ]);
 
-        Post::factory(100)->recycle([Category::factory(3)->create(), User::factory(5)->create()])->create();
+        Post::factory(100)->recycle(User::factory(5)->create())->create();
     }
 }

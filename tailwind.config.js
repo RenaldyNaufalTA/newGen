@@ -20,4 +20,16 @@ export default {
         },
     },
     plugins: [],
+    safelist: [
+        "bg-sky-400",
+        "bg-red-400",
+        "bg-teal-400",
+        "bg-blue-400",
+        "bg-lime-400",
+        "hover:bg-sky-300",
+        "hover:bg-red-300",
+        "hover:bg-teal-300",
+        "hover:bg-blue-300",
+        "hover:bg-lime-300",
+    ],
 };
