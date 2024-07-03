@@ -1,10 +1,13 @@
-<nav class="bg-gray-800" x-data="{ isOpen: false }">
+<nav class="md:bg-gradient-to-r md:from-[#490000] md:from-20% md:via-[#ff0b02] md:via-40% md:to-[#760100] md:to-90%
+bg-gradient-to-l from-[#490000] from-5% via-[#ff0b02] via-60% to-[#760100] to-90%"
+    x-data="{ isOpen: false }">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
-                    <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                        alt="Your Company">
+                    <a href="/">
+                        <img class="h-8 w-8" src="../one-eye.png" alt="newGen">
+                    </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-3">
@@ -54,7 +57,7 @@
             <div class="-mr-2 flex md:hidden">
                 <!-- Mobile menu button -->
                 <button type="button" @click="isOpen = !isOpen"
-                    class="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    class="relative inline-flex items-center justify-center rounded-md bg-red-800 p-2 text-gray-200 hover:bg-red-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-red-800"
                     aria-controls="mobile-menu" aria-expanded="false">
                     <span class="absolute -inset-0.5"></span>
                     <span class="sr-only">Open main menu</span>
@@ -83,7 +86,7 @@
             <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
             <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
         </div>
-        <div class="border-t border-gray-700 pb-3 pt-4">
+        <div class="border-t border-red-400 pb-3 pt-4">
             <div class="flex items-center px-5">
                 <div class="flex-shrink-0">
                     <img class="h-10 w-10 rounded-full"

@@ -3,7 +3,7 @@
 
     <div class="mx-auto max-w-7xl">
         <div
-            class="mx-auto mt-2 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-8 border-gray-200 pt-2 sm:mt-4 sm:pt-4 lg:mx-0 lg:max-w-none lg:grid-cols-3 md:grid-cols-2 ">
+            class="mx-auto mt-2 grid max-w-2xl grid-cols-1 gap-x-1 gap-y-8 border-gray-200 pt-2 sm:mt-4 sm:pt-4 lg:mx-0 lg:max-w-none lg:grid-cols-3 md:grid-cols-2 ">
             @foreach ($posts as $post)
                 <article
                     class="bg-white p-8 flex max-w-xl flex-col items-start justify-between mx-4 rounded-2xl shadow-lg">
