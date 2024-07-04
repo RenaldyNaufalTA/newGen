@@ -1,6 +1,4 @@
-<nav class="md:bg-gradient-to-r md:from-[#490000] md:from-20% md:via-[#ff0b02] md:via-40% md:to-[#760100] md:to-90%
-bg-gradient-to-l from-[#490000] from-5% via-[#ff0b02] via-60% to-[#760100] to-90%"
-    x-data="{ isOpen: false }">
+<nav class="bg-[#FFC0CB]" x-data="{ isOpen: false }">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
             <div class="flex items-center">
@@ -13,7 +11,7 @@ bg-gradient-to-l from-[#490000] from-5% via-[#ff0b02] via-60% to-[#760100] to-90
                     <div class="ml-10 flex items-baseline space-x-3">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-                        <x-nav-link href="/posts" :active="request()->is('post*')">Blog</x-nav-link>
+                        <x-nav-link href="/posts" :active="request()->is(['post*', 'categories*', 'authors*'])">Blog</x-nav-link>
                         <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
                         <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
 
@@ -82,7 +80,7 @@ bg-gradient-to-l from-[#490000] from-5% via-[#ff0b02] via-60% to-[#760100] to-90
         <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-            <x-nav-link href="/posts" :active="request()->is('post*')">Blog</x-nav-link>
+            <x-nav-link href="/posts" :active="request()->is(['post*', 'categories*', 'authors*'])">Blog</x-nav-link>
             <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
             <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
         </div>

@@ -13,14 +13,14 @@
                         alt="{{ $post->author->name }}" class=" h-[55px] w-[55px] rounded-full bg-gray-50">
                     <div class="flex flex-col ms-3 text-xs">
 
-                        <a href="/authors/{{ $post->author->username }}"
+                        <a href="/posts?author={{ $post->author->username }}"
                             class="text-sm text-clip overflow-hidden  text-gray-500 hover:text-blue-400">
                             {{ $post->author->name }}
                         </a>
                         <div class="flex flex-row  gap-x-2 items-center">
 
                             in
-                            <a href="/categories/{{ $post->category->slug }}"
+                            <a href="/posts?category={{ $post->category->slug }}"
                                 class="rounded-full bg-{{ $post->category->color }}-400 px-3 py-1.5  text-white hover:bg-{{ $post->category->color }}-300 ">
                                 {{ $post->category->name }}
                             </a><span class="text-xs text-gray-400">{{ $post->created_at->diffForHumans() }}</span>

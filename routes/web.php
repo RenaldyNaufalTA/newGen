@@ -9,9 +9,11 @@ Route::get('/', function () {
     return view('home', ['title' => 'newGen 1.0']);
 });
 Route::get('/posts', function () {
+
+
     return view('posts', [
         'title' => 'Blog',
-        'posts' => Post::all()
+        'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->get()
     ]);
 });
 
@@ -19,11 +21,11 @@ Route::get('post/{post:slug}', function (Post $post) {
     return view('post', ['title' => 'Single Post', 'post' => $post]);
 })->name('post');
 
-Route::get('authors/{user:username}', function (User $user) {
+Route::get('/posts?author=' . request('author'), function (User $user) {
     return view('posts', ['title' => count($user->posts) . ' Articles by ' . $user->name, 'posts' => $user->posts]);
 });
 
-Route::get('categories/{category:slug}', function (Category $category) {
+Route::get('/posts?category={category:slug}', function (Category $category) {
     return view('posts', ['title' => count($category->posts) . ' Article in : ' . $category->name, 'posts' => $category->posts]);
 });
 

@@ -13,7 +13,7 @@
 </head>
 
 <body class="h-full font-poppins">
-    <div class="min-h-full">
+    <div class="min-h-full bg-[#E6E6FA]">
         <x-navbar></x-navbar>
         <x-header>{{ $title }}</x-header>
         <main>
