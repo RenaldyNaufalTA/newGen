@@ -1,15 +1,16 @@
-<nav class="bg-[#FFC0CB]" x-data="{ isOpen: false }">
+<nav class="bg-[#8D493A]" x-data="{ isOpen: false }">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
-                    <a href="/">
-                        <img class="h-8 w-8" src="../one-eye.png" alt="newGen">
+                    <a href="/" class="text-white font-bold">
+                        newGen
+                        {{-- <img class="h-8 w-8" src="../one-eye.png" alt="newGen"> --}}
                     </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-3">
-                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 text-white" -->
                         <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
                         <x-nav-link href="/posts" :active="request()->is(['post*', 'categories*', 'authors*'])">Blog</x-nav-link>
                         <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
@@ -55,7 +56,7 @@
             <div class="-mr-2 flex md:hidden">
                 <!-- Mobile menu button -->
                 <button type="button" @click="isOpen = !isOpen"
-                    class="relative inline-flex items-center justify-center rounded-md bg-red-800 p-2 text-gray-200 hover:bg-red-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-red-800"
+                    class="relative inline-flex items-center justify-center rounded-md bg-[#D0B8A8] p-2 text-black hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#F8EDE3] focus:ring-offset-1 focus:ring-offset-[#F8EDE3]"
                     aria-controls="mobile-menu" aria-expanded="false">
                     <span class="absolute -inset-0.5"></span>
                     <span class="sr-only">Open main menu</span>
@@ -84,7 +85,7 @@
             <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
             <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
         </div>
-        <div class="border-t border-red-400 pb-3 pt-4">
+        <div class="border-t border-[#D0B8A8] pb-3 pt-4">
             <div class="flex items-center px-5">
                 <div class="flex-shrink-0">
                     <img class="h-10 w-10 rounded-full"
@@ -93,17 +94,17 @@
                 </div>
                 <div class="ml-3">
                     <div class="text-base font-medium leading-none text-white">Tom Cook</div>
-                    <div class="text-sm font-medium leading-none text-gray-400">tom@example.com</div>
+                    <div class="text-sm font-medium leading-none text-[#D0B8A8]">tom@example.com</div>
                 </div>
             </div>
-            <div class="mt-3 space-y-1 px-2">
+            <div class="mt-3 space-y-1">
                 <a href="#"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your
+                    class="block px-3 py-2 text-base font-medium hover:bg-[#F8EDE3] text-white hover:text-black">Your
                     Profile</a>
                 <a href="#"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>
+                    class="block px-3 py-2 text-base font-medium hover:bg-[#F8EDE3] text-white hover:text-black">Settings</a>
                 <a href="#"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign
+                    class="block px-3 py-2 text-base font-medium hover:bg-[#F8EDE3] text-white hover:text-black">Sign
                     out</a>
             </div>
         </div>

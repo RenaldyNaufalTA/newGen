@@ -9,11 +9,9 @@ Route::get('/', function () {
     return view('home', ['title' => 'newGen 1.0']);
 });
 Route::get('/posts', function () {
-
-
     return view('posts', [
         'title' => 'Blog',
-        'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->get()
+        'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->paginate(9)->withQueryString()
     ]);
 });
 

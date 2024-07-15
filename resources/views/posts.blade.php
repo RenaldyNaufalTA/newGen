@@ -12,7 +12,7 @@
                     <input type="hidden" name="author" value="{{ request('author') }}">
                 @endif
                 <input type="text" name="search"
-                    class="w-full backdrop-blur-3xl bg-white/20 focus:bg-white/20  py-2 pl-10 pr-4 rounded-lg focus:outline-none border-4 border-gray-100 focus:border-[#FFC0CB]  transition-colors duration-300"
+                    class="w-full backdrop-blur-3xl bg-white/20 focus:bg-white/20  py-2 pl-10 pr-4 rounded-lg focus:outline-none border-4 border-gray-100 focus:border-[#F8EDE3]  transition-colors duration-300"
                     placeholder="Search..." value="{{ request('search') }}" autocomplete="off">
                 <div
                     class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none focus:border-[#FFC0CB]">
@@ -25,7 +25,11 @@
         </div>
     </div>
     {{-- End Search --}}
-
+    {{-- Pagination --}}
+    <div class="mt-7">
+        {{ $posts->onEachSide(1)->links() }}
+    </div>
+    {{-- End Pagination --}}
     <div class="mx-auto max-w-7xl">
         <div
             class="mx-auto mt-2 grid max-w-2xl grid-cols-1 gap-x-1 gap-y-8 border-gray-200 pt-2 sm:mt-4 sm:pt-4 lg:mx-0 lg:max-w-none lg:grid-cols-3 md:grid-cols-2 ">

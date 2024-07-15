@@ -5,6 +5,7 @@ export default {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        "./vendor/laravel/framework/src/illuminate/Pagination/resources/views/*.blade.php",
     ],
     theme: {
         extend: {
