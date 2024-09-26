@@ -3,6 +3,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 export default {
     content: [
         "./resources/**/*.blade.php",
+        // "./resources/views/auth/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
         "./vendor/laravel/framework/src/illuminate/Pagination/resources/views/*.blade.php",
@@ -17,6 +18,16 @@ export default {
                     "sans-serif",
                     ...defaultTheme.fontFamily.sans,
                 ],
+            },
+            colors: {
+                primary: "#8D493A",
+                secondary: "#D0B8A8",
+                tertiary: "#DFD3C3",
+                quaternary: "#F8EDE3",
+            },
+            backgroundImage: {
+                logoV1: "url('/img/Choco.png')",
+                logoV2: "url('/img/ChocoV2.png')",
             },
         },
     },

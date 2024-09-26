@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        //Membuat post dengan User secara bersamaan
+        User::create([
+            'name' => 'admin',
+            'username' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('password'),
+            'is_admin' => true
+        ]);
+
         Category::create([
             'name' => 'Design',
             'slug' => 'design',
@@ -42,6 +50,7 @@ class DatabaseSeeder extends Seeder
             'color' => 'teal'
         ]);
 
+        //Membuat post dengan User secara bersamaan
         Post::factory(100)->recycle(User::factory(5)->create())->create();
     }
 }

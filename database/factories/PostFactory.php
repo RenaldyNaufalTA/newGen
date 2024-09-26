@@ -24,6 +24,7 @@ class PostFactory extends Factory
             'author_id' => User::factory(),
             'category_id' => mt_rand(1, 5),
             'slug' => Str::slug(fake()->sentence()),
+            'excerpt' => Str::limit(strip_tags(fake()->text()), 200),
             'body' => fake()->text()
         ];
     }

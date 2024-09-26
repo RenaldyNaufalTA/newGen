@@ -1,10 +1,16 @@
-<x-layout>
-    <x-slot:title>{{ $title }}</x-slot:title>
-    {{-- <article class="py-8 max-w-screen-md border-b border-gray-300">
-        
-    </article> --}}
+@extends('layouts.main')
+@section('content')
+    <div class="pt-8 pb-16 lg:pt-16 lg:pb-20 mx-5 bg-white rounded-2xl shadow-md">
+        <div class="mb-10">
 
-    <div class="pt-8 pb-16 lg:pt-16 lg:pb-24 mx-5 bg-white rounded-2xl shadow-md">
+            @if ($post['image'])
+                <img class="object-contain h-[400px] w-full" src="{{ asset('storage/images/' . $post['image']) }}"
+                    alt="{{ $post['image'] }}" />
+            @else
+                <img class=" object-contain h-[400px] w-full "
+                    src="https://picsum.photos/seed/{{ $post->category->name }}/1200/400" alt="{{ $post['image'] }}" />
+            @endif
+        </div>
         <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
             <div class="w-full mx-auto max-w-4xl px-6 md:px-10 sm:px-12">
                 <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">{{ $post['title'] }}</h2>
@@ -29,10 +35,10 @@
 
 
                 </div>
-                <p class="my-4 font-light">{{ $post['body'] }}
+                <p class="my-4 font-light">{!! $post['body'] !!}
                 </p>
                 <a href="/posts" class="font-medium text-blue-500 hover:underline">&laquo; Back to posts </a>
             </div>
         </div>
     </div>
-</x-layout>
+@endsection

@@ -1,4 +1,4 @@
-<x-layout>
-    <x-slot:title>{{ $title }}</x-slot:title>
+@extends('layouts.main')
+@section('content')
     <h3>Welcome About</h3>
-</x-layout>
+@endsection

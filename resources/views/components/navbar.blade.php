@@ -1,12 +1,10 @@
-<nav class="bg-[#8D493A]" x-data="{ isOpen: false }">
+<nav class="bg-primary transition-all" x-data="{ isOpen: false }">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
-                    <a href="/" class="text-white font-bold">
-                        newGen
-                        {{-- <img class="h-8 w-8" src="../one-eye.png" alt="newGen"> --}}
-                    </a>
+                    <x-logo height="h-10"></x-logo>
+                    {{-- <img class="h-8 w-8" src="../one-eye.png" alt="newGen"> --}}
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-3">
@@ -21,42 +19,53 @@
             </div>
             <div class="hidden md:block">
                 <div class="ml-4 flex items-center md:ml-6">
+                    @auth
+                        <!-- Profile dropdown -->
+                        <div class="relative ml-3">
+                            <div>
+                                <button type="button" @click="isOpen = !isOpen"
+                                    class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                    id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                    <span class="absolute -inset-1.5"></span>
+                                    <span class="sr-only">Open user menu</span>
+                                    <img class="h-8 w-8 rounded-full"
+                                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                        alt="">
+                                </button>
+                            </div>
+                            <div x-show="isOpen" x-transition:enter="transition ease-out duration-100 transform"
+                                x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-75 transform"
+                                x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                                class="absolute -right-2 z-10 mt-3 w-48 origin-top-right rounded-md bg-secondary shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
+                                tabindex="-1">
+                                <!-- Active: "bg-gray-100", Not Active: "" -->
+                                <a href="/dashboard"
+                                    class="block w-full hover:bg-primary hover:text-quaternary hover:rounded-md px-4 py-2 text-sm text-gray-700"
+                                    role="menuitem" tabindex="-1" id="user-menu-item-0">
+                                    Back to Dashboard</a>
 
-                    <!-- Profile dropdown -->
-                    <div class="relative ml-3">
-                        <div>
-                            <button type="button" @click="isOpen = !isOpen"
-                                class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                                <span class="absolute -inset-1.5"></span>
-                                <span class="sr-only">Open user menu</span>
-                                <img class="h-8 w-8 rounded-full"
-                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                    alt="">
-                            </button>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit"
+                                        class="block w-full hover:bg-primary hover:text-quaternary hover:rounded-md px-4 py-2 text-sm text-gray-700 text-start"
+                                        role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</button>
+                                </form>
+                            </div>
                         </div>
-                        <div x-show="isOpen" x-transition:enter="transition ease-out duration-100 transform"
-                            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-                            x-transition:leave="transition ease-in duration-75 transform"
-                            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                            class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                            role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
-                            tabindex="-1">
-                            <!-- Active: "bg-gray-100", Not Active: "" -->
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                tabindex="-1" id="user-menu-item-1">Settings</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                tabindex="-1" id="user-menu-item-2">Sign out</a>
+                    @else
+                        <div class="relative ml-3">
+                            <x-nav-link href="/login" :active="request()->is('/login')">Login</x-nav-link>
                         </div>
-                    </div>
+                    @endauth
+
                 </div>
             </div>
             <div class="-mr-2 flex md:hidden">
                 <!-- Mobile menu button -->
                 <button type="button" @click="isOpen = !isOpen"
-                    class="relative inline-flex items-center justify-center rounded-md bg-[#D0B8A8] p-2 text-black hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#F8EDE3] focus:ring-offset-1 focus:ring-offset-[#F8EDE3]"
+                    class="relative inline-flex items-center justify-center rounded-md text-white focus:outline-none me-2"
                     aria-controls="mobile-menu" aria-expanded="false">
                     <span class="absolute -inset-0.5"></span>
                     <span class="sr-only">Open main menu</span>
@@ -77,36 +86,47 @@
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div x-show="isOpen" class="md:hidden" id="mobile-menu">
+    <div x-show="isOpen" x-transition:enter="transition ease-out duration-300 transform"
+        x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
+        x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90"
+        class="md:hidden transition-all duration-300" id="mobile-menu">
         <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <!-- Current: "-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
             <x-nav-link href="/posts" :active="request()->is(['post*', 'categories*', 'authors*'])">Blog</x-nav-link>
             <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
             <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
         </div>
-        <div class="border-t border-[#D0B8A8] pb-3 pt-4">
-            <div class="flex items-center px-5">
-                <div class="flex-shrink-0">
-                    <img class="h-10 w-10 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt="">
+        @auth
+            <div class="border-t border-quaternary pb-3 pt-4">
+                <div class="flex items-center px-5">
+                    <div class="flex-shrink-0">
+                        <img class="h-10 w-10 rounded-full"
+                            src="https://picsum.photos/seed/{{ auth()->user()->username }}/1200/400" alt="">
+                    </div>
+                    <div class="ml-3">
+                        <div class="text-base font-medium leading-none text-white">{{ auth()->user()->name }}</div>
+                        <div class="text-sm font-medium leading-none text-[#D0B8A8]">{{ auth()->user()->email }}</div>
+                    </div>
                 </div>
-                <div class="ml-3">
-                    <div class="text-base font-medium leading-none text-white">Tom Cook</div>
-                    <div class="text-sm font-medium leading-none text-[#D0B8A8]">tom@example.com</div>
+                <div class="mt-3 space-y-1 px-2">
+                    <a href="/dashboard"
+                        class="block px-3 py-2 text-base font-medium hover:bg-secondary text-white hover:text-black">Back
+                        to Dashboard</a>
+
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <a class="block px-3 py-2 text-base font-medium hover:bg-secondary text-white hover:text-black">Sign
+                            out
+                        </a>
+                    </form>
                 </div>
             </div>
-            <div class="mt-3 space-y-1">
-                <a href="#"
-                    class="block px-3 py-2 text-base font-medium hover:bg-[#F8EDE3] text-white hover:text-black">Your
-                    Profile</a>
-                <a href="#"
-                    class="block px-3 py-2 text-base font-medium hover:bg-[#F8EDE3] text-white hover:text-black">Settings</a>
-                <a href="#"
-                    class="block px-3 py-2 text-base font-medium hover:bg-[#F8EDE3] text-white hover:text-black">Sign
-                    out</a>
+        @else
+            <div class="relative ml-3">
+                <x-nav-link href="/login" :active="request()->is('/login')">Login</x-nav-link>
             </div>
-        </div>
+        @endauth
     </div>
 </nav>

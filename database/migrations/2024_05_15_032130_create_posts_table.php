@@ -25,7 +25,9 @@ return new class extends Migration
                 indexName: 'post_category_id'
             );
             $table->string('slug')->unique();
-            $table->text('body');
+            $table->string('image')->nullable();
+            $table->text('excerpt');
+            $table->mediumText('body');
             $table->timestamps();
         });
     }
