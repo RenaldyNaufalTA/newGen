@@ -7,6 +7,6 @@
         </div>
     @endif
     <div class="md:px-5">
-        <x-post.table></x-post.table>
+        <x-post.table :posts="$posts"></x-post.table>
     </div>
 @endsection

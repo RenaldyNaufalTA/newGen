@@ -9,10 +9,10 @@
             <img
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
         </button>
-        <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
-        <div x-show="isOpen" class="absolute w-52 bg-white rounded-lg shadow-lg py-2 mt-16">
+        <div x-show="isOpen" class="absolute z-50 w-52 bg-white rounded-lg shadow-lg py-2 mt-16">
             <a href="/" class="block px-4 py-2 cursor-pointer hover:bg-gray-100">
                 <i class="fas fa-home mr-3"></i>Back to Home</a>
+            <hr>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button class="block w-full text-start px-4 py-2 cursor-pointer hover:bg-gray-100">

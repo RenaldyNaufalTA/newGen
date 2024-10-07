@@ -12,14 +12,14 @@
     <div class="p-4">
         <a href="/posts?category={{ $post->category->slug }}"
             class=" rounded-full bg-{{ $post->category->color }}-400 hover:bg-{{ $post->category->color }}-300 py-1 px-3 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
-            {{ $post->category->name }} {{ $post->image }}
+            {{ $post->category->name }}
         </a>
         <a href="/post/{{ $post->slug }}">
             <h6 class="my-4 text-slate-800 text-lg font-semibold">
                 {{ $post->title }}
             </h6>
         </a>
-        <p class="inline text-slate-600 text-sm leading-normal font-light indent-8">{{ $post->body }}&nbsp;</p>
+        <p class="inline text-slate-600 text-sm leading-normal font-light indent-8">{{ $post->excerpt }}&nbsp;</p>
         <a href="/post/{{ $post->slug }}"
             class="text-slate-800 font-semibold text-sm hover:underline inline-flex items-center">
             Read More
@@ -37,7 +37,8 @@
                     src="https://picsum.photos/seed/{{ $post->category->name }}/500/400"
                     class="relative inline-block h-10 w-10 rounded-full" />
                 <div class="flex flex-col ml-3 text-sm">
-                    <span class="text-slate-800 font-semibold">{{ $post->author->username }}</span>
+                    <span
+                        class="text-slate-800 font-semibold hover:text-primary hover:underline">{{ $post->author->username }}</span>
                     <span class="text-slate-600 text-xs">
                         {{ $post->created_at->diffForHumans() }}
                     </span>

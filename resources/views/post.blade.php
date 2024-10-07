@@ -35,8 +35,8 @@
 
 
                 </div>
-                <p class="my-4 font-light">{!! $post['body'] !!}
-                </p>
+                <pre class="my-4 whitespace-normal">{!! $post['body'] !!}
+                </pre>
                 <a href="/posts" class="font-medium text-blue-500 hover:underline">&laquo; Back to posts </a>
             </div>
         </div>

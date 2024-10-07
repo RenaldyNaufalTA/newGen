@@ -23,3 +23,7 @@ body {
 .err-msg-1 {
     @apply mt-1 italic text-pink-600 text-xs font-semibold tracking-normal;
 }
+
+th {
+    @apply p-4 border-y border-slate-300 bg-primary text-sm font-normal leading-none text-white;
+}

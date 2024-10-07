@@ -1,20 +1,22 @@
 <?php
 
-namespace App\View\Components\Post;
+namespace App\View\Components\forms;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Table extends Component
+class EditUploadImage extends Component
 {
-    public $posts;
+    public $post;
+    public $fileSize;
     /**
      * Create a new component instance.
      */
-    public function __construct($posts)
+    public function __construct($post, $fileSize)
     {
-        $this->posts = $posts;
+        $this->post = $post;
+        $this->fileSize = $fileSize;
     }
 
     /**
@@ -22,6 +24,6 @@ class Table extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.post.table');
+        return view('components.forms.edit-upload-image');
     }
 }

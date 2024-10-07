@@ -6,6 +6,8 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\File;
 
 class DashboardPostController extends Controller
 {
@@ -14,8 +16,19 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
+        $posts = Post::where('author_id', auth()->user()->id)->latest()->paginate(10);
+
+        // Path to the public/storage directory
+        $storageLinkPath = public_path('storage');
+
+        // Check if the symbolic link exists
+        if (!File::exists($storageLinkPath)) {
+            Artisan::call('storage:link');
+        }
+
         return view('dashboard.posts.index', [
-            'title' => 'My Posts'
+            'title' => 'My Posts',
+            'posts' => $posts
         ]);
     }
 
@@ -65,7 +78,7 @@ class DashboardPostController extends Controller
             'slug' => $request->slug,
             'image' => $name,
             'excerpt' => Str::limit(strip_tags($request->body), 200),
-            'body' => $request->body
+            'body' => nl2br($request->body)
         ], $validatedData);
 
         // Redirect to a specific route with a success message
@@ -83,9 +96,22 @@ class DashboardPostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug)
     {
-        //
+        $post = Post::firstWhere('slug', $slug);
+
+        // Use storage_path to get the absolute path to the image
+        $imagePath = storage_path('app/public/images/' . $post->image);
+
+        // Check if the image exists and get the file size
+        if (file_exists($imagePath) ? $fileSize = filesize($imagePath) : $fileSize = 0)
+
+            return view('dashboard.posts.edit', [
+                'title' => 'Edit Post',
+                'post' => $post,
+                'fileSize' => $fileSize,
+                'categories' => Category::all()
+            ]);
     }
 
     /**
@@ -93,7 +119,9 @@ class DashboardPostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $body = nl2br($request->body);
+        $body1 = $request->body;
+        dd($body, $body1);
     }
 
     /**
