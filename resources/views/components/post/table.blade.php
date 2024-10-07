@@ -39,7 +39,7 @@
         </thead>
         <tbody>
             @forelse ($posts as $post)
-                <tr class="even:bg-tertiary/50">
+                <tr class="even:bg-tertiary/50 hi">
                     <td class="p-4 py-5">
                         <p class="ms-2 block font-semibold text-sm text-slate-800">
                             {{ ($posts->currentpage() - 1) * $posts->perpage() + $loop->index + 1 }}</p>
